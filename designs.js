@@ -22,16 +22,14 @@ $(document).ready(function() {
 
 	$('table').on('click', 'td', function(event) {
 		var paint = $('#colorPicker').val();
-		console.log($(this).attr('style'));
-		//$(this).attr('style')
+
 		if ($(this).attr('style') !== undefined) {
 			$(this).removeAttr('style');
 			
 	}else{
 	$(this).css('background-color', paint);	
 	}
-
-		// $(event.target).css('background-color', paint);
+	
 		
 	});
 
