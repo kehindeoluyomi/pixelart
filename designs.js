@@ -3,29 +3,40 @@
 
 // When size is submitted by the user, call makeGrid()
 
-function makeGrid() {
-
 // Your code goes here!
-$(document).ready(function(){
+$(document).ready(function() {
+	$("#sizePicker").submit(function(event) {
+		event.preventDefault();
+		$('tr').remove();
+		var rows = $("#inputHeight").val();
+		var columns = $("#inputWidth").val();
+		for (var r = 1; r <= rows; r++) {
+			let row = $("<tr></tr>");
+				for (var c = 1; c <= columns; c++) {
+					row.append($("<td ></td>"));
+				}
+			$('table').append(row);
+		}
+	});
 
-$("#sizePicker").submit(function makeGrid(){
-var rows = $("#inputHeight").val();
-var columns = $("#inputWidth").val();
-for (var r = 1; r <= rows; r++) {
-	$("table").append("<tr> </tr>");
-	for (var c = 1; c <= columns; c++) {
-		$('tr:last').append("<td></td>")
-		$('td').attr("class",'cells')
+
+	$('table').on('click', 'td', function(event) {
+		var paint = $('#colorPicker').val();
+		console.log($(this).attr('style'));
+		//$(this).attr('style')
+		if ($(this).attr('style') !== undefined) {
+			$(this).removeAttr('style');
+			
+	}else{
+	$(this).css('background-color', paint);	
 	}
-}
 
-grid.preventDefault();
-}
+		// $(event.target).css('background-color', paint);
+		
+	});
 
 
-$('.cells').click(function(event){
-	var paint = $('#colorpicker').val();
-	//$(event.target).css('background-color', paint);
-	$(this).attr('background-color');
+		
+	
+
 });
-
